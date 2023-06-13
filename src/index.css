@@ -38,3 +38,28 @@ body {
 .text-left{
   text-align: left !important;
 }
+
+.text-responsive{
+  display: inline-block;
+}
+
+@media (min-width: 480px) {
+  /* Telefon */
+  .text-responsive {
+    font-size: 2vw !important;
+  }
+}
+
+@media (min-width: 640px) {
+  /* Tablet */
+  .text-responsive {
+    font-size: 1.7vw !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  /* Desktop */
+  .text-responsive {
+    font-size: 1.2vw !important;
+  }
+}
