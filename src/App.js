@@ -9,7 +9,6 @@ function App() {
   return (
     <div className="App">
       <div className="d-flex justify-content-center align-items-start bg-first min-vh-100 ">
-        <div className="d-flex flex-column min-w-75 p-2 m-3 bg-third rounded">
           <Router>
             <Routes>
               <Route exact path="/" element={<Home />} />
@@ -17,7 +16,6 @@ function App() {
               <Route exact path="/edittodo/:id" element={<EditTodo />} />
             </Routes>
           </Router>
-        </div>
       </div>
     </div>
   );
