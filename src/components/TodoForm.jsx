@@ -35,16 +35,16 @@ export default function TodoForm({ title }) {
     deadline: getFutureDateTime(),
   });
 
-  useEffect(() => {
-    const loadTodos = async () => {
-      const result = await axios.get(`http://localhost:8080/todo/${id}`);
-      setTodo(result.data);
-    };
+  const loadTodo = async () => {
+    const result = await axios.get(`http://localhost:8080/todo/${id}`);
+    setTodo(result.data);
+  };
 
+  useEffect(() => {
     if (id) {
-      loadTodos();
+      loadTodo();
     }
-  }, [id]);
+  },[]);
 
   const { name, isCompleted, deadline } = todo;
 
@@ -63,7 +63,6 @@ export default function TodoForm({ title }) {
   const onSubmit = async (e) => {
     //zapobiega automatycznemu odswiezeniu strony
     e.preventDefault();
-    //dodanie nowego todo do backendu
     if (id) await axios.put(`http://localhost:8080/todo/${id}`, todo);
     else await axios.post("http://localhost:8080/todo", todo);
     //przekierowanie do home
