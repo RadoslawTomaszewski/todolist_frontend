@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { TodoItem } from "../components/TodoItem";
 
+axios.defaults.withCredentials = false;
+
 export default function Home() {
   const [todos, setTodos] = useState();
 

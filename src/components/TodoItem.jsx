@@ -3,6 +3,7 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+axios.defaults.withCredentials = false;
 //funkcja obliczajaca pozostaly czas wykonania zadania
 const calculateRemainingTime = (fromdate) => {
   const now = new Date();

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+axios.defaults.withCredentials = false;
 //funkcja do walidacji formularza daty
 const getCurrentDateTime = () => {
   const now = new Date();
