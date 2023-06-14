@@ -8,7 +8,7 @@ export default function Home() {
 
   //AXIOS wczytanie zadan
   const loadTodos = async () => {
-    const result = await axios.get("http://localhost:8080/todos");
+    const result = await axios.get("https://to-do-list-hdmj.onrender.com/todos");
     setTodos(result.data);
   };
 

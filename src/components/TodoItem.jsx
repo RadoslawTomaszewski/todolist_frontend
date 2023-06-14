@@ -49,7 +49,7 @@ export const TodoItem = ({ todo, loadTodos }) => {
 
   //AXIOS usuniecie zadania
   const deleteTodo = async () => {
-    await axios.delete(`http://localhost:8080/todo/${todo.id}`);
+    await axios.delete(`https://to-do-list-hdmj.onrender.com/todo/${todo.id}`);
     loadTodos();
   };
 
@@ -59,7 +59,7 @@ export const TodoItem = ({ todo, loadTodos }) => {
       ...todo,
       isCompleted: !todo.isCompleted,
     };
-    await axios.put(`http://localhost:8080/todo/${todo.id}`, updatedTodo);
+    await axios.put(`https://to-do-list-hdmj.onrender.com/todo/${todo.id}`, updatedTodo);
     loadTodos();
   };
 

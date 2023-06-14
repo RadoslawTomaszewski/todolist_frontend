@@ -39,7 +39,7 @@ export default function TodoForm({ title }) {
 
   useEffect(() => {
     const loadTodo = async () => {
-      const result = await axios.get(`http://localhost:8080/todo/${id}`);
+      const result = await axios.get(`https://to-do-list-hdmj.onrender.com/todo/${id}`);
       setTodo(result.data);
     };
     if (id) {
@@ -64,8 +64,8 @@ export default function TodoForm({ title }) {
   const onSubmit = async (e) => {
     //zapobiega automatycznemu odswiezeniu strony
     e.preventDefault();
-    if (id) await axios.put(`http://localhost:8080/todo/${id}`, todo);
-    else await axios.post("http://localhost:8080/todo", todo);
+    if (id) await axios.put(`https://to-do-list-hdmj.onrender.com/todo/${id}`, todo);
+    else await axios.post("https://to-do-list-hdmj.onrender.com/todo", todo);
     //przekierowanie do home
     navigate("/");
   };
