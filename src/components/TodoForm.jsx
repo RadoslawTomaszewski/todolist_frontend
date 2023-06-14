@@ -35,16 +35,17 @@ export default function TodoForm({ title }) {
     deadline: getFutureDateTime(),
   });
 
-  const loadTodo = async () => {
-    const result = await axios.get(`http://localhost:8080/todo/${id}`);
-    setTodo(result.data);
-  };
+
 
   useEffect(() => {
+    const loadTodo = async () => {
+      const result = await axios.get(`http://localhost:8080/todo/${id}`);
+      setTodo(result.data);
+    };
     if (id) {
       loadTodo();
     }
-  },[]);
+  },[id]);
 
   const { name, isCompleted, deadline } = todo;
 

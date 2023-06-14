@@ -1,8 +1,8 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AddTodo from "./todos/AddTodo";
-import EditTodo from "./todos/EditTodo";
+import AddTodo from "./pages/AddTodo";
+import EditTodo from "./pages/EditTodo";
 import './index.css';
 
 function App() {
