@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 //funkcja do walidacji formularza daty
 const getCurrentDateTime = () => {
@@ -18,6 +18,8 @@ const getFutureDateTime = () => {
 };
 
 export default function TodoForm({ title }) {
+  const { id } = useParams();
+
   //hook pozwalajacy zablokowac wybranie daty z przeszlosci
   const [minDate, setMinDate] = useState(
     getCurrentDateTime().toISOString().slice(0, 16)
@@ -32,6 +34,17 @@ export default function TodoForm({ title }) {
     isCompleted: false,
     deadline: getFutureDateTime(),
   });
+
+  useEffect(() => {
+    const loadTodos = async () => {
+      const result = await axios.get(`http://localhost:8080/todo/${id}`);
+      setTodo(result.data);
+    };
+
+    if (id) {
+      loadTodos();
+    }
+  }, [id]);
 
   const { name, isCompleted, deadline } = todo;
 
@@ -50,8 +63,9 @@ export default function TodoForm({ title }) {
   const onSubmit = async (e) => {
     //zapobiega automatycznemu odswiezeniu strony
     e.preventDefault();
-    //dodanie nowego zadania do backendu
-    await axios.post("http://localhost:8080/todo", todo);
+    //dodanie nowego todo do backendu
+    if (id) await axios.put(`http://localhost:8080/todo/${id}`, todo);
+    else await axios.post("http://localhost:8080/todo", todo);
     //przekierowanie do home
     navigate("/");
   };
