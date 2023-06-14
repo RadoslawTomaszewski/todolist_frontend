@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <div className="d-flex justify-content-center align-items-start bg-first min-vh-100 ">
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <Routes>
               <Route exact path="/" element={<Home />} />
               <Route exact path="/addtodo" element={<AddTodo />} />
